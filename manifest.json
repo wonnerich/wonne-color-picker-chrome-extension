@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Color Picker Wonne",
+  "description": "A simple color picker extension. Pick any color on the screen, view latest colors picked and add it to your clipboard with one click",
+  "version": "1.0",
+  "action": {
+    "default_popup": "index.html"
+  },
+  "icons": {
+    "16": "icons/icons16.png",
+    "32": "icons/icons32.png",
+    "64": "icons/icons64.png",
+    "128": "icons/icons128.png"
+  }
+}

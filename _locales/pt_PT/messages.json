@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Color Picker Wonne",
+    "description": "O título da extensão, apresentada na loja Web"
+  },
+  "appDesc": {
+    "message": "Uma extensão de seletor de cores simples. Escolha qualquer cor na tela, veja as últimas cores selecionadas e adicione-as à sua área de transferência com um clique",
+    "description": "A breve descrição da extensão, apresentada na loja Web"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Color Picker Wonne",
+    "description": "Tytuł rozszerzenia wyświetlany w sklepie internetowym"
+  },
+  "appDesc": {
+    "message": "Proste rozszerzenie do wybierania kolorów. Wybierz dowolny kolor na ekranie, zobacz ostatnio wybrane kolory i dodaj je do schowka jednym kliknięciem",
+    "description": "Krótki opis rozszerzenia wyświetlany w sklepie internetowym"
+  }
+}

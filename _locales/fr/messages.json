@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Color Picker Wonne",
+    "description": "Le titre de l'extension, affiché dans la boutique en ligne"
+  },
+  "appDesc": {
+    "message": "Une simple extension de sélecteur de couleurs. Choisissez n'importe quelle couleur à l'écran, affichez les dernières couleurs sélectionnées et ajoutez-la à votre presse-papiers en un clic",
+    "description": "La brève description de l'extension, affichée dans la boutique en ligne"
+  }
+}

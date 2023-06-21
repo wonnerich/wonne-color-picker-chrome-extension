@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Color Picker Wonne",
+    "description": "Titlul extensiei, afișat în magazinul web"
+  },
+  "appDesc": {
+    "message": "O extensie simplă pentru selectarea culorilor. Alegeți orice culoare de pe ecran, vizualizați cele mai recente culori alese și adăugați-o în clipboard cu un singur clic",
+    "description": "Scurtă descriere a extensiei, afișată în magazinul web"
+  }
+}

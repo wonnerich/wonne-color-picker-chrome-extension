@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Color Picker Wonne",
+    "description": "De titel van de extensie, weergegeven in de webwinkel"
+  },
+  "appDesc": {
+    "message": "Een simpel kleurkiezer-extensie. Kies een kleur op het scherm, bekijk de laatst gekozen kleuren en voeg deze met één klik toe aan uw klembord",
+    "description": "De korte beschrijving van de extensie, weergegeven in de webwinkel"
+  }
+}

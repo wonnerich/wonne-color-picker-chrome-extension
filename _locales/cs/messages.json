@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Color Picker Wonne",
+    "description": "Název rozšíření zobrazený ve webovém obchodě"
+  },
+  "appDesc": {
+    "message": "Jednoduché rozšíření pro výběr barev. Vyberte si jakoukoli barvu na obrazovce, zobrazte nejnovější vybrané barvy a přidejte je do schránky jediným kliknutím.",
+    "description": "Krátký popis rozšíření zobrazený ve webovém obchodě"
+  }
+}

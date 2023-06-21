@@ -1,10 +1,11 @@
 {
+  "name": "__MSG_appName__",
+  "description": "__MSG_appDesc__",
+  "default_locale": "en",
   "manifest_version": 3,
-  "name": "Color Picker Wonne",
-  "description": "A simple color picker extension. Pick any color on the screen, view latest colors picked and add it to your clipboard with one click",
-  "version": "1.0",
+  "version": "1.2.1",
   "action": {
-    "default_popup": "index.html"
+    "default_popup": "src/index.html"
   },
   "icons": {
     "16": "icons/icons16.png",

@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Color Picker Wonne",
+    "description": "Der Titel der Erweiterung, der im Webshop angezeigt wird"
+  },
+  "appDesc": {
+    "message": "Eine einfache Farbauswahl Erweiterung. Wähle eine Farbe, siehe den Verlauf deiner Farben und speicher sie mit einem Click",
+    "description": "Die Kurzbeschreibung der Erweiterung, die im Webshop angezeigt wird"
+  }
+}

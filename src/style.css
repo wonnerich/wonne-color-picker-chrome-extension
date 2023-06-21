@@ -50,8 +50,7 @@
 .all-website-colors {
   margin: 10px 15px;
 }
-.picked-colors.hide,
-.all-website-colors.hide {
+.hide {
   display: none;
 }
 
@@ -63,7 +62,9 @@
   font-size: 1rem;
 }
 
-.picked-colors .clear-all {
+.clear-all,
+.show-all,
+.hide-all {
   color: #5372f0;
   cursor: pointer;
   font-size: 0.9rem;

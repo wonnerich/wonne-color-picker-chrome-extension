@@ -3,6 +3,8 @@ const getAllBtn = document.getElementById("get-all-colors");
 const colorList = document.querySelector(".all-colors");
 const colorListAll = document.querySelector(".all-website-colors-list");
 const clearAll = document.querySelector(".clear-all");
+const showAll = document.querySelector(".show-all");
+const hideAll = document.querySelector(".hide-all");
 const pickedColors = JSON.parse(localStorage.getItem("picked-colors") || "[]");
 const pickedColorsRGB = JSON.parse(
   localStorage.getItem("picked-colors-rgb") || "[]"
@@ -141,4 +143,15 @@ let colorPalette = () => {
   document.querySelector(".all-website-colors").classList.remove("hide");
 };
 
-getAllBtn.addEventListener("click", colorPalette);
+getAllBtn.addEventListener("click", () => {
+  colorPalette();
+  getAllBtn.classList.add("hide");
+});
+
+hideAll.addEventListener("click", () => {
+  colorListAll.classList.add("hide");
+});
+
+showAll.addEventListener("click", () => {
+  colorListAll.classList.remove("hide");
+});

@@ -20,21 +20,38 @@
   justify-content: center;
   background: #e3f2fd;
 }
-.picker #color-picker {
+
+.picker {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.picker #color-picker,
+#get-all-colors {
   outline: none;
   border: none;
   color: #fff;
-  padding: 10px 20px;
+  padding: 10px 15px;
   font-size: 1rem;
   cursor: pointer;
   border-radius: 5px;
   background: #5372f0;
 }
 
-.picked-colors {
+#color-picker:hover,
+#get-all-colors:hover {
+  background-color: #6581f1;
+}
+
+.picked-colors,
+.all-website-colors {
   margin: 10px 15px;
 }
-.picked-colors.hide {
+.picked-colors.hide,
+.all-website-colors.hide {
   display: none;
 }
 
@@ -70,6 +87,26 @@
   width: 22px;
   margin-right: 8px;
   border-radius: 5px;
+}
+
+.all-website-colors-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.all-website-colors header {
+  justify-content: space-between;
+}
+
+.all-website-colors .color .rect {
+  display: block;
+  height: 30px;
+  width: 30px;
+  margin-right: 8px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .all-colors .color .value {

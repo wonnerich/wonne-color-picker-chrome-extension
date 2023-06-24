@@ -1,7 +1,7 @@
 const colorPickerBtn = document.getElementById("color-picker");
 const getAllBtn = document.getElementById("get-all-colors");
 const colorList = document.querySelector(".all-colors");
-const colorListAll = document.querySelector(".all-website-colors-list");
+const colorsAll = document.querySelector(".all-website-colors-list");
 const clearAll = document.querySelector(".clear-all");
 const showAll = document.querySelector(".show-all");
 const hideAll = document.querySelector(".hide-all");
@@ -30,12 +30,18 @@ function hexToRGB(h) {
   return "rgb(" + +r + "," + +g + "," + +b + ")";
 }
 
-//Copy Color to Clipboard
+//Copy Color from Text to Clipboard
 
 const copyColor = (elem) => {
   navigator.clipboard.writeText(elem.dataset.color);
   elem.innerText = "Copied";
   setTimeout(() => (elem.innerText = elem.dataset.color), 1000);
+};
+
+//Copy Color from Rect to Clipboard
+
+const copyColorRect = (elem) => {
+  navigator.clipboard.writeText(elem.dataset.color);
 };
 
 //Show selected color
@@ -113,45 +119,45 @@ colorPickerBtn.addEventListener("click", activateEyeDropper);
 //Get all Colors of the Website in an Array
 let colorPalette = () => {
   // Array zum Speichern der Farben
-  var colors = [];
+  let colors = [];
 
-  // Selektieren aller Elemente auf der Webseite
-  var elements = document.querySelectorAll("*");
+  // Select all Elements on Website
+  let elements = document.querySelectorAll("*");
 
-  // Iterieren über alle Elemente und Extrahieren der Hintergrundfarbe
+  // Iterate over all Elements and check for Background Colors
   elements.forEach(function (element) {
-    var bgColor = window.getComputedStyle(element).backgroundColor;
+    let bgColor = window.getComputedStyle(element).backgroundColor;
 
-    // Überprüfen, ob die Farbe gültig ist und nicht transparent
+    // Check is Color is valid and not transparent
     if (bgColor && bgColor !== "rgba(0, 0, 0, 0)") {
-      // Hinzufügen der Farbe zur Palette
+      // Add Color to Palette
       colors.push(bgColor);
     }
   });
-
-  console.log(colors);
-  if (!colors.length) return;
-  colorListAll.innerHTML = colors
+  // Check for Duplicates in Array
+  let uniqColors = [...new Set(colors)];
+  if (!uniqColors.length) return;
+  //Create Rectangles with All Colors from Website
+  colorsAll.innerHTML = uniqColors
     .map(
       (color) =>
-        `<li class="color">
-          <span class="rect" style="background: ${color}; border: 1px solid ${
+        `<li class="color allColorRect">
+          <span class="rect" data-color="${color}" style="background: ${color}; border: 1px solid ${
           color == "rgb(255, 255, 255)" ? "#ccc" : color
-        }""></span></li>`
+        }""><img src="/icons/check-solid.svg" class="check hide"/></span></li>`
     )
     .join("");
   document.querySelector(".all-website-colors").classList.remove("hide");
+  const copiedHeader = document.querySelector(".copied");
+  document.querySelectorAll(".allColorRect").forEach((li) => {
+    li.addEventListener("click", (e) => {
+      copyColorRect(e.currentTarget.lastElementChild);
+      copiedHeader.classList.remove("hide");
+      setTimeout(() => copiedHeader.classList.add("hide"), 1000);
+    });
+  });
 };
 
 getAllBtn.addEventListener("click", () => {
   colorPalette();
-  getAllBtn.classList.add("hide");
-});
-
-hideAll.addEventListener("click", () => {
-  colorListAll.classList.add("hide");
-});
-
-showAll.addEventListener("click", () => {
-  colorListAll.classList.remove("hide");
 });

@@ -63,8 +63,7 @@
 }
 
 .clear-all,
-.show-all,
-.hide-all {
+.copied {
   color: #5372f0;
   cursor: pointer;
   font-size: 0.9rem;

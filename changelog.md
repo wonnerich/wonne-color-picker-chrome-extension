@@ -1,3 +1,6 @@
+**_ 16.06.2023 _** Version 1.3
+NEW FEATURE: Extract all Colors used on a Website in RGB and add it to your Clipboard with one click
+Updated Permissions in manifest.json
 **_ 16.06.2023 _** Version 1.2.1
 Minor Bug fixing
 **_ 29.05.2023 _** Version 1.2

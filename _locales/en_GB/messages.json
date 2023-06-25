@@ -4,7 +4,7 @@
     "description": "The title of the extension, displayed in the web store"
   },
   "appDesc": {
-    "message": "A simple colour picker extension. Pick any colour on the screen, view latest colours picked and add it to your clipboard with one click",
-    "description": "The short description of the extension, displayed in the web store"
+    "message": "A simple colour picker extension. Pick any colour on the screen, view latest colours picked and add it to your clipboard with one click. You can also find all colours on a Website with one-click and add it to your clipboard.",
+    "description": "A simple colour picker extension. Easily extract colours from a website and add it to your clipboard."
   }
 }

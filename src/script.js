@@ -2,9 +2,9 @@ const colorPickerBtn = document.getElementById("color-picker");
 const getAllBtn = document.getElementById("get-all-colors");
 const colorList = document.querySelector(".all-colors");
 const colorsAll = document.querySelector(".all-website-colors-list");
+const colorsAllTitle = document.querySelector(".all-website-colors");
 const clearAll = document.querySelector(".clear-all");
-const showAll = document.querySelector(".show-all");
-const hideAll = document.querySelector(".hide-all");
+const copiedHeader = document.querySelector(".copied");
 const pickedColors = JSON.parse(localStorage.getItem("picked-colors") || "[]");
 const pickedColorsRGB = JSON.parse(
   localStorage.getItem("picked-colors-rgb") || "[]"
@@ -116,39 +116,65 @@ const clearAllColors = () => {
 clearAll.addEventListener("click", clearAllColors);
 colorPickerBtn.addEventListener("click", activateEyeDropper);
 
-//Get all Colors of the Website in an Array
-let colorPalette = () => {
-  // Array zum Speichern der Farben
-  let colors = [];
-
-  // Select all Elements on Website
-  let elements = document.querySelectorAll("*");
-
-  // Iterate over all Elements and check for Background Colors
-  elements.forEach(function (element) {
-    let bgColor = window.getComputedStyle(element).backgroundColor;
-
-    // Check is Color is valid and not transparent
-    if (bgColor && bgColor !== "rgba(0, 0, 0, 0)") {
-      // Add Color to Palette
-      colors.push(bgColor);
-    }
+document.addEventListener("DOMContentLoaded", function () {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.scripting.executeScript(
+      {
+        target: { tabId: tabs[0].id },
+        function: extractColors,
+      },
+      function (results) {
+        displayColors(results[0].result);
+      }
+    );
   });
-  // Check for Duplicates in Array
-  let uniqColors = [...new Set(colors)];
-  if (!uniqColors.length) return;
+});
+
+function extractColors() {
+  const elements = document.querySelectorAll("*");
+  const colors = new Set();
+
+  for (let i = 0; i < elements.length; i++) {
+    const element = elements[i];
+    const computedStyle = getComputedStyle(element);
+    const color = computedStyle.color;
+    const backgroundColor = computedStyle.backgroundColor;
+
+    if (
+      color &&
+      color !== "rgba(0, 0, 0, 0)" &&
+      color !== "rgb(0, 0, 0)" &&
+      !colors.has(color)
+    ) {
+      colors.add(color);
+    }
+
+    if (
+      backgroundColor &&
+      backgroundColor !== "rgba(0, 0, 0, 0)" &&
+      backgroundColor !== "rgb(0, 0, 0)" &&
+      !colors.has(backgroundColor)
+    ) {
+      colors.add(backgroundColor);
+    }
+  }
+
+  return Array.from(colors);
+}
+
+function displayColors(colors) {
+  if (!colors.length) return;
   //Create Rectangles with All Colors from Website
-  colorsAll.innerHTML = uniqColors
+  colorsAll.innerHTML = colors
     .map(
       (color) =>
         `<li class="color allColorRect">
           <span class="rect" data-color="${color}" style="background: ${color}; border: 1px solid ${
           color == "rgb(255, 255, 255)" ? "#ccc" : color
-        }""><img src="/icons/check-solid.svg" class="check hide"/></span></li>`
+        }""></span></li>`
     )
     .join("");
-  document.querySelector(".all-website-colors").classList.remove("hide");
-  const copiedHeader = document.querySelector(".copied");
+
   document.querySelectorAll(".allColorRect").forEach((li) => {
     li.addEventListener("click", (e) => {
       copyColorRect(e.currentTarget.lastElementChild);
@@ -156,8 +182,11 @@ let colorPalette = () => {
       setTimeout(() => copiedHeader.classList.add("hide"), 1000);
     });
   });
-};
+}
+
+//Get all Colors of the Website in an Array
 
 getAllBtn.addEventListener("click", () => {
-  colorPalette();
+  colorsAllTitle.classList.remove("hide");
+  document.querySelector(".allColorRect").classList.remove("hide");
 });
